@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:46:58 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/27 16:05:18 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:52:46 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ typedef struct s_data
 typedef struct s_node
 {
 	int		actual;
-	struct s_node	*next;
-	struct s_node	*previous;
+	void	*next;
+	void	*previous;
 }				t_node;
 
 typedef struct s_stack
 {
 	int		len;
-	struct s_node	*first;
-	struct s_node	*last;
+	t_node	*first;
+	t_node	*last;
 }				t_stack;
 
 long	ft_atol(char *str);
@@ -45,7 +45,8 @@ char	**ft_split(char *s, char c);
 char	*joinfree(char *s1, char *s2);
 int		is_parsed(t_data *data, char **argv);
 void	freetab(char **tab);
-void	create_stacks(t_data *data, t_stack *a, t_stack *b);
+t_stack	*stack_init(t_stack *stack);
+t_stack	*create_stack(t_data *data, t_stack *stack);
 void	print_stack(t_stack *stack);
 
 #endif

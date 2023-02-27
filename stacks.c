@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:45:23 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/27 16:38:20 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:53:21 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,15 @@ void	addback(t_stack *stack, int value)
 	stack->len++;
 }
 
-void	create_stacks(t_data *data, t_stack *a, t_stack *b)
+t_stack	*create_stack(t_data *data, t_stack *stack)
 {
 	int	i;
 
-	a = stack_init(a);
-	b = stack_init(b);
+	stack = stack_init(stack);
 	i = 0;
 	while (data->tabarg[i])
-		addfront(a, ft_atol(data->tabarg[i++]));
-	print_stack(a);
+		addfront(stack, ft_atol(data->tabarg[i++]));
+	return (stack);
 }
 
 void	print_stack(t_stack *stack)
