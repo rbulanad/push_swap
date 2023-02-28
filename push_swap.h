@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:46:58 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/27 16:52:46 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:29:27 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct s_data
 
 typedef struct s_node
 {
-	int		actual;
-	void	*next;
-	void	*previous;
+	int				actual;
+	struct s_node	*next;
+	struct s_node	*previous;
 }				t_node;
 
 typedef struct s_stack
@@ -45,8 +45,18 @@ char	**ft_split(char *s, char c);
 char	*joinfree(char *s1, char *s2);
 int		is_parsed(t_data *data, char **argv);
 void	freetab(char **tab);
+//stack creation
 t_stack	*stack_init(t_stack *stack);
 t_stack	*create_stack(t_data *data, t_stack *stack);
 void	print_stack(t_stack *stack);
+void	addfront(t_stack *stack, int value);
+void	addback(t_stack *stack, int value);
+//instructions
+void	sa_sb(t_stack *stack, char x);
+void	ss(t_stack *a, t_stack *b);
+void	ra_rb(t_stack *stack, char c);
+void	rr(t_stack *a, t_stack *b);
+void	rra_rrb(t_stack *stack, char x);
+void	rrr(t_stack *a, t_stack *b);
 
 #endif
