@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:45:23 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/28 17:29:53 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:12:58 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*stack_init(t_stack *stack)
 	return (stack);
 }
 
-void	addfront(t_stack *stack, int value)
+void	addtop(t_stack *stack, int value)
 {
 	t_node	*new;
 
@@ -46,7 +46,7 @@ void	addfront(t_stack *stack, int value)
 	stack->len++;
 }
 
-void	addback(t_stack *stack, int value)
+void	addbot(t_stack *stack, int value)
 {
 	t_node	*new;
 
@@ -76,7 +76,7 @@ t_stack	*create_stack(t_data *data, t_stack *stack)
 	stack = stack_init(stack);
 	i = 0;
 	while (data->tabarg[i])
-		addfront(stack, ft_atol(data->tabarg[i++]));
+		addtop(stack, ft_atol(data->tabarg[i++]));
 	return (stack);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:44:52 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/28 17:28:28 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:11:42 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ra_rb(t_stack *stack, char x)
 	if (stack->first == NULL || stack->last == NULL)
 		return ;
 	tmp = stack->first->actual;
-	addback(stack, tmp);
+	addbot(stack, tmp);
 	stack->len--;
 	stack->first = stack->first->next;
 	free(stack->first->previous);
@@ -66,7 +66,7 @@ void	rra_rrb(t_stack *stack, char x)
 	if (stack->last == NULL)
 		return ;
 	tmp = stack->last->actual;
-	addfront(stack, tmp);
+	addtop(stack, tmp);
 	stack->len--;
 	stack->last = stack->last->previous;
 	free(stack->last->next);
@@ -84,26 +84,26 @@ void	rrr(t_stack *a, t_stack *b)
 	write(1, "rr\n", 3);
 }
 
-void	pa_pb(t_stack *a, t_stack *b, char *x)
+void	pa_pb(t_stack *a, t_stack *b, char x)
 {
 	int	tmp;
 
-	if (x == "pa")
+	if (x == 'a')
 	{
-		tmp = b->last->actual;
-		b->last = b->last->previous;
-		free(b->last->next);
-		b->last->next = NULL;
-		addback(a, tmp);
+		tmp = b->first->actual;
+		b->first = b->first->next;
+		free(b->first->previous);
+		b->first->previous = NULL;
+		addtop(a, tmp);
 		write(1, "pa\n", 3);
 	}
-	else if (x == "pb")
+	else if (x == 'b')
 	{
-		tmp = a->last->actual;
-		a->last = a->last->previous;
-		free(a->last->next);
-		a->last->next = NULL;
-		addback(b, tmp);
+		tmp = a->first->actual;
+		a->first = a->first->next;
+		free(a->first->previous);
+		a->first->previous = NULL;
+		addtop(b, tmp);
 		write(1, "pb\n", 3);
 	}
 }
