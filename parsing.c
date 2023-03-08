@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 07:58:03 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/28 17:08:36 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:40:19 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_num(char **argv, t_data *data)
 			tmp = joinfree(tmp, " ");
 			if (ft_atol(data->tabarg[j]) > INT_MAX
 				|| ft_atol(data->tabarg[j]) < INT_MIN
-				|| ft_atol(data->tabarg[j++]) == 0)
+				|| ft_atol(data->tabarg[j++]) == 3000000000)
 				return (free(tmp), 1);
 		}
 		freetab(data->tabarg);
