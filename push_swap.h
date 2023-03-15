@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:46:58 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/08 18:09:46 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/15 15:39:53 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h> //////////////////////////to be deleted
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
@@ -66,7 +67,17 @@ void	rra_rrb(t_stack *stack, char x);
 void	rrr(t_stack *a, t_stack *b);
 void	pa_pb(t_stack *a, t_stack *b, char x);
 //sorting
+int		in_chunk(t_stack *stack, int chunklen);
+int		look_top(t_stack *stack, int chunklen);
+int		look_bot(t_stack *stack, int chunklen);
+int		look_top_big(t_stack *stack, int big);
+int		look_bot_big(t_stack *stack, int big);
+int		find_big(t_stack *stack);
+int		find_small(t_stack *stack);
+int		absoluter(int num);
 void	three(t_stack *a);
 void	five(t_stack *a, t_stack *b);
+void	hundred(t_stack *a, t_stack *b);
+void	fivehundred(t_stack *a, t_stack *b);
 
 #endif
