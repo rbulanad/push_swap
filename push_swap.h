@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 10:46:58 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/15 15:39:53 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:17:02 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int		look_bot_big(t_stack *stack, int big);
 int		find_big(t_stack *stack);
 int		find_small(t_stack *stack);
 int		absoluter(int num);
+void	sort_push_b(t_stack *a, t_stack *b, int nextchunk, int midchunk);
+void	sort_push_a(t_stack *a, t_stack *b);
 void	three(t_stack *a);
 void	five(t_stack *a, t_stack *b);
 void	hundred(t_stack *a, t_stack *b);
