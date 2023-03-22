@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:41:49 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/17 16:13:46 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:55:07 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ void	five(t_stack *a, t_stack *b)
 	t_node	*tmp;
 
 	tmp = NULL;
-	while (a->len != 3)
+	if (a->len == 2)
+		sa_sb(a, 'a');
+	else
 	{
-		mintop(a, tmp);
-		pa_pb(a, b, 'b');
+		while (a->len != 3)
+		{
+			mintop(a, tmp);
+			pa_pb(a, b, 'b');
+		}
+		three(a);
+		while (b->len != 0)
+			pa_pb(a, b, 'a');
 	}
-	three(a);
-	while (b->len != 0)
-		pa_pb(a, b, 'a');
 }
 
 void	hundred(t_stack *a, t_stack *b)
@@ -65,7 +70,7 @@ void	hundred(t_stack *a, t_stack *b)
 	nextchunk = find_small(a) + chunk;
 	while (a->len > 0)
 	{
-		midchunk = (nextchunk) / 2;
+		midchunk = nextchunk / 2;
 		while (in_chunk(a, nextchunk) == 1)
 			sort_push_b(a, b, nextchunk, midchunk);
 		nextchunk += chunk;

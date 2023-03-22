@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:45:23 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/09 12:35:11 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:49:28 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,18 @@ t_stack	*create_stack(t_data *data, t_stack *stack)
 	return (stack);
 }
 
+void	freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	tab = NULL;
+}
+
+/*
 void	print_stack(t_stack *stack)
 {
 	t_node	*tmp;
@@ -91,4 +103,4 @@ void	print_stack(t_stack *stack)
 		tmp = tmp->next;
 	}
 	printf("len = %d\n", stack->len);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:48:08 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/20 15:10:30 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:57:46 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,20 @@ char	**ft_split(char *s, char c)
 	tab[j] = NULL;
 	return (tab);
 }
+/*
+#include <stdio.h>
+int	main()
+{
+	char *str;
+	char **tab;
+
+	str = "            ";
+	tab = ft_split(str, ' ');
+	int i = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i++]);
+		write(1, ".\n", 2);
+	}
+	printf("%s\n", tab[i]);
+}*/

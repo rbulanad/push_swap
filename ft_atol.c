@@ -6,11 +6,18 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:19:35 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/01 12:39:52 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:29:18 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	ft_whitespace(char c)
+{
+	if (c == 32 || c == 9)
+		return (1);
+	return (0);
+}
 
 long	ft_atol(char *str)
 {
@@ -21,6 +28,8 @@ long	ft_atol(char *str)
 	result = 0;
 	i = 0;
 	signe = 1;
+	while (ft_whitespace(str[i]) == 1)
+		i++;
 	if (str[i] == '-')
 	{
 		signe *= -1;

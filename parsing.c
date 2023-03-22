@@ -6,21 +6,28 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 07:58:03 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/01 12:40:19 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:03:03 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	freetab(char **tab)
+//to handle '-' and '+' followd by a space
+int	checktmp(char *tmp)
 {
 	int	i;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-	tab = NULL;
+	if (!tmp)
+		return (2);
+	while (tmp && tmp[i + 1] != '\0')
+	{
+		if ((tmp[i] == '-' && tmp[i + 1] == ' ')
+			|| (tmp[i] == '+' && tmp[i + 1] == ' '))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	check_num(char **argv, t_data *data)
@@ -41,13 +48,15 @@ int	check_num(char **argv, t_data *data)
 			tmp = joinfree(tmp, " ");
 			if (ft_atol(data->tabarg[j]) > INT_MAX
 				|| ft_atol(data->tabarg[j]) < INT_MIN
+				|| checktmp(tmp) == 1
 				|| ft_atol(data->tabarg[j++]) == 3000000000)
 				return (free(tmp), 1);
 		}
 		freetab(data->tabarg);
 	}
-	data->tabarg = ft_split(tmp, ' ');
-	return (free(tmp), 0);
+	if (checktmp(tmp) == 2)
+		return (free(tmp), 2);
+	return (data->tabarg = ft_split(tmp, ' '), free(tmp), 0);
 }
 
 int	check_doubles(t_data *data)
@@ -89,11 +98,13 @@ int	check_sort(t_data *data)
 
 int	is_parsed(t_data *data, char **argv)
 {
-	if (check_num(argv, data) == 1)
-		return (write(1, "Error\n", 6), 1);
-	if (check_doubles(data) == 1)
-		return (write(1, "Error\n", 6), 1);
-	if (check_sort(data) == 1)
+	if (check_num(argv, data) == 2)
 		return (1);
+	if (check_num(argv, data) == 1)
+		return (freetab(data->tabarg), write(1, "Error\n", 6), 1);
+	if (check_doubles(data) == 1)
+		return (freetab(data->tabarg), write(1, "Error\n", 6), 1);
+	if (check_sort(data) == 1)
+		return (freetab(data->tabarg), 1);
 	return (0);
 }
