@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 07:58:03 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/22 09:03:03 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/28 17:31:59 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_num(char **argv, t_data *data)
 				|| ft_atol(data->tabarg[j]) < INT_MIN
 				|| checktmp(tmp) == 1
 				|| ft_atol(data->tabarg[j++]) == 3000000000)
-				return (free(tmp), 1);
+				return (freetab(data->tabarg), free(tmp), 1); //freetab here for the if trigger
 		}
 		freetab(data->tabarg);
 	}
@@ -64,6 +64,8 @@ int	check_doubles(t_data *data)
 	int		i;
 	int		j;
 
+	if (data->tabarg[0] && !data->tabarg[1])
+		return (freetab(data->tabarg), 1);
 	i = 0;
 	while (data->tabarg[i])
 	{
@@ -101,10 +103,10 @@ int	is_parsed(t_data *data, char **argv)
 	if (check_num(argv, data) == 2)
 		return (1);
 	if (check_num(argv, data) == 1)
-		return (freetab(data->tabarg), write(1, "Error\n", 6), 1);
+		return (write(1, "Error\n", 6), 1);
 	if (check_doubles(data) == 1)
-		return (freetab(data->tabarg), write(1, "Error\n", 6), 1);
+		return (write(1, "Error\n", 6), 1);
 	if (check_sort(data) == 1)
-		return (freetab(data->tabarg), 1);
+		return (1);
 	return (0);
 }
