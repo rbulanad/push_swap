@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 07:58:03 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/28 17:31:59 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:05:13 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ int	check_num(char **argv, t_data *data)
 				|| ft_atol(data->tabarg[j]) < INT_MIN
 				|| checktmp(tmp) == 1
 				|| ft_atol(data->tabarg[j++]) == 3000000000)
-				return (freetab(data->tabarg), free(tmp), 1); //freetab here for the if trigger
+				return (freetab(data->tabarg), free(tmp), 1);
 		}
 		freetab(data->tabarg);
 	}
 	if (checktmp(tmp) == 2)
-		return (free(tmp), 2);
+		return (2);
 	return (data->tabarg = ft_split(tmp, ' '), free(tmp), 0);
 }
 
@@ -65,7 +65,7 @@ int	check_doubles(t_data *data)
 	int		j;
 
 	if (data->tabarg[0] && !data->tabarg[1])
-		return (freetab(data->tabarg), 1);
+		return (0);
 	i = 0;
 	while (data->tabarg[i])
 	{
@@ -73,7 +73,7 @@ int	check_doubles(t_data *data)
 		while (data->tabarg[j])
 		{
 			if (ft_atol(data->tabarg[i]) == ft_atol(data->tabarg[j++]))
-				return (1);
+				return (freetab(data->tabarg), 1);
 		}
 		i++;
 	}
@@ -95,14 +95,17 @@ int	check_sort(t_data *data)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (freetab(data->tabarg), 1);
 }
 
 int	is_parsed(t_data *data, char **argv)
 {
-	if (check_num(argv, data) == 2)
+	int	result;
+
+	result = check_num(argv, data);
+	if (result == 2)
 		return (1);
-	if (check_num(argv, data) == 1)
+	if (result == 1)
 		return (write(1, "Error\n", 6), 1);
 	if (check_doubles(data) == 1)
 		return (write(1, "Error\n", 6), 1);

@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 16:22:24 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/02/21 11:27:56 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:59:33 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	*joinfree(char *s1, char *s2)
 {
 	char	*ret;
 
+	if (!s2)
+		return (NULL);
 	if (!s1)
 	{
 		s1 = malloc(sizeof(char) * 1);

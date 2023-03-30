@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 12:19:35 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/20 18:29:18 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/29 11:43:53 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,16 @@ long	ft_atol(char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		result *= 10;
-		result += (str[i] - 48);
-		i++;
+		result += (str[i++] - 48);
 	}
 	if (str[i] != '\0')
 		return (3000000000);
 	return (result * signe);
 }
 /*
+#include <stdio.h>
 int main(void)
 {
-	char str[] = "12 3";
-	char str2[] = "12 3";
-	printf("%d\n", atoi(str));
-	printf("%d\n", ft_atoi(str2));
+	char str[] = "-12 ";
+	printf("%ld\n", ft_atol(str));
 }*/

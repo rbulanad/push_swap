@@ -6,7 +6,7 @@
 /*   By: rbulanad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:45:23 by rbulanad          #+#    #+#             */
-/*   Updated: 2023/03/28 17:13:07 by rbulanad         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:01:11 by rbulanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,11 @@ void	freetab(char **tab)
 		return ;
 	i = 0;
 	while (tab[i])
-		free(tab[i++]);
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
 	free(tab);
 	tab = NULL;
 }
